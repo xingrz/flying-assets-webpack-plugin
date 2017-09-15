@@ -1,6 +1,8 @@
 Flying Assets Webpack Plugin
 ==========
 
+[![][npm-version]][npm-url] [![][npm-downloads]][npm-url] [![][license-img]][license-url] [![][issues-img]][issues-url]
+
 A Webpack plugin generates launching HTML for both development and production.
 
 **This plugin is at very early stage. It just works good with my practices. Please let me know your idea. Pull Requests are welcome.**
@@ -109,3 +111,11 @@ app.use((req, res, error) => {
 ## License
 
 [MIT License](LICENSE)
+
+[npm-version]: https://img.shields.io/npm/v/flying-assets-webpack-plugin.svg?style=flat-square
+[npm-downloads]: https://img.shields.io/npm/dm/flying-assets-webpack-plugin.svg?style=flat-square
+[npm-url]: https://www.npmjs.org/package/flying-assets-webpack-plugin
+[license-img]: https://img.shields.io/npm/l/flying-assets-webpack-plugin.svg?style=flat-square
+[license-url]: LICENSE
+[issues-img]:   https://img.shields.io/github/issues/xingrz/flying-assets-webpack-plugin.svg?style=flat-square
+[issues-url]: https://github.com/xingrz/flying-assets-webpack-plugin/issues
