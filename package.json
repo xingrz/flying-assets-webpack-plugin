@@ -1,0 +1,33 @@
+{
+  "name": "flying-assets-webpack-plugin",
+  "version": "0.1.0",
+  "description": "A Webpack plugin generates launching HTML for both development and production",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/babel src -d lib",
+    "clean": "rm -rf lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/xingrz/flying-assets-webpack-plugin.git"
+  },
+  "keywords": [
+    "webpack",
+    "assets"
+  ],
+  "author": "XiNGRZ <chenxingyu92@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xingrz/flying-assets-webpack-plugin/issues"
+  },
+  "homepage": "https://github.com/xingrz/flying-assets-webpack-plugin#readme",
+  "dependencies": {
+    "pug": "^2.0.0-rc.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-0": "^6.24.1"
+  }
+}
