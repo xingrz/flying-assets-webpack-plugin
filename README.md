@@ -83,7 +83,7 @@ app.use(webpackDevMiddleware(compiler, {
   /* ... */
 }));
 app.use(webpackHotMiddleware(compiler));
-app.use(webpackAssetsMiddleware(compiler));
+app.get('*', webpackAssetsMiddleware(compiler));
 
 /* ... */
 ```
@@ -101,11 +101,20 @@ const app = express();
 /* ... */
 
 app.use('/assets', express.static(assets));
-app.use((req, res, error) => {
+app.get('*', (req, res, error) => {
   res.sendFile(join(assets, 'index.html'));
 });
 
 /* ... */
+```
+
+### Use as a middleware only (don't render)
+
+```js
+app.use(webpackAssetsMiddleware(compiler, { render: false }));
+app.get('*', (req, res, error) => {
+  res.render('index');  // now you have locals `assets` in your template scope
+});
 ```
 
 ## License
