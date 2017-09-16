@@ -129,7 +129,7 @@ module.exports = {
 ```js
 app.use(webpackAssetsMiddleware(compiler, { render: false }));
 app.get('*', (req, res, error) => {
-  res.render('index');  // now you have locals `assets` in your template scope
+  res.render('index');
 });
 ```
 
@@ -137,8 +137,9 @@ app.get('*', (req, res, error) => {
 
 ```js
 app.locals.assets = require('../dist/assets.json');
+app.locals.publicPath = require('../webpack.prod').output.publicPath;
 app.get('*', (req, res, error) => {
-  res.render('index');  // now you have locals `assets` in your template scope
+  res.render('index');
 });
 ```
 
