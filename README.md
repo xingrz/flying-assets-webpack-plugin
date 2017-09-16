@@ -108,10 +108,35 @@ app.get('*', (req, res, error) => {
 /* ... */
 ```
 
-### Use as a middleware only (don't render)
+## Want to do the rendering yourself?
+
+For example, server-side rendering?
+
+#### `webpack.*.js`
+
+```js
+module.exports = {
+  /* ... */
+  plugins: [
+    /* ... */
+    new FlyingAssetsPlugin({ json: true }),
+  ]
+};
+```
+
+#### Development
 
 ```js
 app.use(webpackAssetsMiddleware(compiler, { render: false }));
+app.get('*', (req, res, error) => {
+  res.render('index');  // now you have locals `assets` in your template scope
+});
+```
+
+#### Production
+
+```js
+app.locals.assets = require('../dist/assets.json');
 app.get('*', (req, res, error) => {
   res.render('index');  // now you have locals `assets` in your template scope
 });

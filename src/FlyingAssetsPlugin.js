@@ -2,12 +2,23 @@ import { compileFile } from 'pug';
 
 export default class FlyingAssetsPlugin {
 
-  constructor(render) {
+  constructor(render, options) {
+    if (typeof options == 'undefined' && typeof render == 'object') {
+      options = render;
+      render = undefined;
+    }
+
     if (typeof render == 'string') {
       this.render = compileFile(render);
     } else if (typeof render == 'function') {
       this.render = render;
     }
+
+    this.options = {
+      html: true,
+      json: false,
+      ...options,
+    };
   }
 
   apply(compiler) {
@@ -35,7 +46,7 @@ export default class FlyingAssetsPlugin {
       });
     });
 
-    if (typeof this.render == 'function') {
+    if (this.options.html && typeof this.render == 'function') {
       const html = this.render({
         assets: this.compiler.assets,
         publicPath: this.compiler.options.output.publicPath,
@@ -47,6 +58,14 @@ export default class FlyingAssetsPlugin {
       };
 
       this.compiler.html = html;
+    }
+
+    if (this.options.json) {
+      const json = JSON.stringify(this.compiler.assets);
+      compilation.assets['assets.json'] = {
+        source: () => json,
+        size: () => json.length,
+      };
     }
 
     callback();
