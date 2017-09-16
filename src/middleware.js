@@ -6,7 +6,7 @@ export default function webpackAssetsMiddleware(compiler, options = {}) {
 
   return (req, res, next) => {
     res.locals.assets = compiler.assets;
-    res.locals.publicPath = compiler.options.output.publicPath,
+    res.locals.publicPath = compiler.options.output.publicPath;
 
     if (options.render) {
       res.send(compiler.html);

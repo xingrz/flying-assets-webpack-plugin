@@ -1,6 +1,6 @@
 {
   "name": "flying-assets-webpack-plugin",
-  "version": "0.1.0-rc5",
+  "version": "0.1.0-rc6",
   "description": "A Webpack plugin generates launching HTML for both development and production",
   "main": "index.js",
   "scripts": {
